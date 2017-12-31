@@ -1,3 +1,4 @@
+import * as Constants from "../util/constants";
 const initialState = {
   categories : [],
   fetching:false,
@@ -6,17 +7,18 @@ const initialState = {
 }
 
 const categoriesReducer = (state = initialState,action) => {
+  console.log(Constants.fetchCategories());
   switch(action.type){
-    case "FETCH_CATEGORIES_PENDING":{
+    case Constants.fetchCategories()+Constants.pending():{
       state = {...state,fetching:true};
       break;
     }
-    case "FETCH_CATEGORIES_FULFILLED":{
+    case  Constants.fetchCategories()+Constants.fulfilled():{
       const categories = {state};
       state = {...state,fetching:false,fetched:true,categories : action.payload.data};
       break;
     }
-    case "FETCH_CATEGORIES_REJECTED":{
+    case Constants.fetchCategories()+Constants.rejected():{
         state = {...state,fetching:false,error:action.payload};
       break;
     }

@@ -16,10 +16,14 @@ export default class Categories extends React.Component{
     const{dispatch} = this.props;
     dispatch(getCategories());
   }
-  
+
   render(){
-    const{categories} = this.props;
-    const mappedCategories = categories.map((category)=><Category key = {category.id} category = {category}/>);
+    const{categories,fetched} = this.props;
+    var mappedCategories = null;
+    if(fetched){
+          mappedCategories = categories.map((category)=><Category key = {category.id} category = {category}/>);
+    }
+
     return(<div>
       <h1>Categories will be loaded here....</h1>
       <div class="row">{mappedCategories}</div>

@@ -1,9 +1,9 @@
 import axios from "axios";
-import {URL} from "../util/constants";
+import {URL,fetchCategories} from "../util/constants";
 
 export function getCategories(){
   return {
-    type : "FETCH_CATEGORIES",
+    type : fetchCategories(),
     payload : axios.get(URL()+"/food.json"),
   };
 }
