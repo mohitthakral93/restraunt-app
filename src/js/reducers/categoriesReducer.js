@@ -46,6 +46,15 @@ const categoriesReducer = (state = initialState,action) => {
       state = {...state,fetching:false,error:action.payload};
       break;
     }
+    case Constants.addCategory()+Constants.rejected():{
+      state = {...state,fetching:false,error:action.payload};
+      break;
+    }
+    case Constants.addCategory()+Constants.fulfilled():{
+      const {categories} = state;
+      state = {...state,categories:update(categories,{$push:[action.payload.data]})};
+      break;
+    }
   }
 
   return state;

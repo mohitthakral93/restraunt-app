@@ -1,5 +1,6 @@
 import React from "react";
 import Category from "./pages/category";
+import NewCategory from "./pages/newCategory";
 import {connect} from  "react-redux";
 import {getCategories} from  "../actions/categoriesActions";
 
@@ -26,6 +27,7 @@ export default class Categories extends React.Component{
 
     return(<div>
       <h1>Categories will be loaded here....</h1>
+      <NewCategory dispatch = {dispatch}/>
       <div class="row">{mappedCategories}</div>
     </div>);
   }
