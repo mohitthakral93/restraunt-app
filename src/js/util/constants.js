@@ -24,6 +24,10 @@ export function updateCategory(){
   return "UPDATE_CATEGORY";
 }
 
+export function deleteCategory(){
+  return "DELETE_CATEGORY";
+}
+
 export function getIndex(value, arr, prop) {
     for(var i = 0; i < arr.length; i++) {
         if(arr[i][prop] === value) {

@@ -25,8 +25,11 @@ export default React.createClass({
       }
     },
     saveCategory(){
-      this.props.toggleEditMode();
       this.props.dispatch(update(this.state));
+      this.toggleEditMode();
+    },
+    toggleEditMode(){
+      this.props.toggleEditMode();
     },
   render(){
 
@@ -47,6 +50,7 @@ export default React.createClass({
             No
           </label>
           <button class = "btn btn-default" onClick ={this.saveCategory.bind(this)}>Save</button>
+          <button class = "btn btn-default" onClick ={this.toggleEditMode.bind(this)}>Discard</button>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {URL,fetchCategories,updateCategory} from "../util/constants";
+import {URL,fetchCategories,updateCategory,deleteCategory} from "../util/constants";
 
 export function getCategories(){
   return {
@@ -9,9 +9,16 @@ export function getCategories(){
 }
 
 export function update(category){
-  console.log(category);
   return {
     type : updateCategory(),
     payload : axios.put(URL()+"/food",category),
+  };
+}
+
+export function deleteCat(id){
+  console.log(id);
+  return {
+    type:deleteCategory(),
+    payload:axios.delete(URL()+"/food/"+id),
   };
 }

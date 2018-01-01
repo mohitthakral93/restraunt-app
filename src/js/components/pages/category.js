@@ -16,7 +16,7 @@ export default React.createClass({
     const editMode = false;
     return(<div class="col-md-4">
           <CategoryEditable category = {category} toggleEditMode = {this.toggleEditMode.bind(this)}  editMode = {this.state.editMode} dispatch = {this.props.dispatch}/>
-          <CategoryRead category = {category} toggleEditMode = {this.toggleEditMode.bind(this)} editMode ={this.state.editMode} />
+          <CategoryRead category = {category} toggleEditMode = {this.toggleEditMode.bind(this)} editMode ={this.state.editMode} dispatch = {this.props.dispatch}/>
       </div>);
   }
 });
