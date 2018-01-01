@@ -1,24 +1,22 @@
 import React from "react";
+import CategoryEditable from "./categoryEditable";
+import CategoryRead from "./categoryRead";
 
 export default React.createClass({
-
+  getInitialState(){
+    return {editMode:false};
+  },
+  toggleEditMode(){
+    const editMode = !this.state.editMode;
+    this.setState({editMode});
+  },
   render(){
     const {category} = this.props;
     const {name,active,type,id} = category;
+    const editMode = false;
     return(<div class="col-md-4">
-        <h4>{name}</h4>
-        <select value = {type}>
-          <option value ="food">Food</option>
-          <option value = "drink">Dirnk</option>
-        </select>
-        <label>
-          <input type = "radio" name = {id} value = {true} checked = {active}/>
-          Yes
-        </label>
-        <label>
-          <input type = "radio" name = {id} value = {false} checked = {!active}/>
-          No
-        </label>
+          <CategoryEditable category = {category} toggleEditMode = {this.toggleEditMode.bind(this)}  editMode = {this.state.editMode} dispatch = {this.props.dispatch}/>
+          <CategoryRead category = {category} toggleEditMode = {this.toggleEditMode.bind(this)} editMode ={this.state.editMode} />
       </div>);
   }
 });

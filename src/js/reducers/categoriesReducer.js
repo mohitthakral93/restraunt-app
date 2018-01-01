@@ -1,4 +1,6 @@
 import * as Constants from "../util/constants";
+import update from "react-addons-update";
+
 const initialState = {
   categories : [],
   fetching:false,
@@ -7,8 +9,7 @@ const initialState = {
 }
 
 const categoriesReducer = (state = initialState,action) => {
-  console.log(Constants.fetchCategories());
-  switch(action.type){
+    switch(action.type){
     case Constants.fetchCategories()+Constants.pending():{
       state = {...state,fetching:true};
       break;
@@ -21,6 +22,15 @@ const categoriesReducer = (state = initialState,action) => {
     case Constants.fetchCategories()+Constants.rejected():{
         state = {...state,fetching:false,error:action.payload};
       break;
+    }
+    case Constants.updateCategory()+Constants.fulfilled():{
+      const {categories} = state;
+      const index = Constants.getIndex(action.payload.data.id,categories,"id");
+      console.log(categories[0]);
+      state = update(state,{
+        categories:{
+          [index] :{$set:action.payload.data}
+        }});
     }
   }
   return state;
